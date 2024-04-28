@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ff24e287-8259-4c61-9541-8238ac933611" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/GameBoard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GameWindow.java" afterDir="false" />
+    <list default="true" id="ff24e287-8259-4c61-9541-8238ac933611" name="Changes" comment="Creating a game window and graphics of the playing field">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,13 +28,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/SnakeGame/Snake_0.1&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="" />
@@ -51,8 +49,19 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1712937915116</updated>
-      <workItem from="1712937916546" duration="4158000" />
+      <workItem from="1712937916546" duration="4280000" />
+      <workItem from="1713288258070" duration="213000" />
+      <workItem from="1713288489471" duration="263000" />
+      <workItem from="1713697596820" duration="46000" />
     </task>
+    <task id="LOCAL-00001" summary="Creating a game window and graphics of the playing field">
+      <created>1712947768606</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1712947768606</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -68,5 +77,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Creating a game window and graphics of the playing field" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creating a game window and graphics of the playing field" />
   </component>
 </project>

@@ -10,9 +10,7 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
     private int height = 800;
     private int score = 0;
     private String time = "00:00";
-    private int snakeX;
-    private int snakeY;
-    private int snakeSize = 1;
+
     private int direction = 3;
     private Timer timer;
     private boolean directionChanged = false;
@@ -36,29 +34,6 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
         this.direction = direction;
     }
 
-    public int getSnakeX() {
-        return snakeX;
-    }
-
-    public void setSnakeX(int snakeX) {
-        this.snakeX = snakeX;
-    }
-
-    public int getSnakeY() {
-        return snakeY;
-    }
-
-    public void setSnakeY(int snakeY) {
-        this.snakeY = snakeY;
-    }
-
-    public int getSnakeSize() {
-        return snakeSize;
-    }
-
-    public void setSnakeSize(int snakeSize) {
-        this.snakeSize = snakeSize;
-    }
 
     public Timer getTimer() {
         return timer;
@@ -117,17 +92,17 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
     public void setTime(String time) {
         this.time = time;
     }
+    Snake snake = new Snake(boardSize / 2 - 3,boardSize / 2, 1);
 
     //endregion
     //region constructor
     public GameBoard() {
+
         setPreferredSize(new Dimension(getWidth(), getHeight()));
         setBackground(Color.black);
         timer = new Timer(500, this);
         timer.start();
 
-        snakeX = boardSize / 2 - 3;
-        snakeY = boardSize / 2;
 
         addKeyListener(this);
         setFocusable(true);
@@ -159,7 +134,7 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
 
         //Snake
         g.setColor(Color.black);
-        g.fillRect(snakeX * tileSize, snakeY * tileSize, tileSize, tileSize);
+        g.fillRect(snake.getSnakeX() * tileSize, snake.getSnakeY() * tileSize, tileSize, tileSize);
 
         //score and time panel
         g.setColor(Color.gray);
@@ -176,16 +151,16 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
 
         switch (direction) {
             case 0:
-                snakeY--;
+                snake.setSnakeY(snake.getSnakeY()-1);
                 break;
             case 1:
-                snakeY++;
+                snake.setSnakeY(snake.getSnakeY()+1);
                 break;
             case 2:
-                snakeX--;
+                snake.setSnakeX(snake.getSnakeX()-1);
                 break;
             case 3:
-                snakeX++;
+                snake.setSnakeX(snake.getSnakeX()+1);
                 break;
         }
     }

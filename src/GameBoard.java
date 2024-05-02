@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.security.*;
 
 public class GameBoard extends JPanel implements ActionListener, KeyListener {
     private int boardSize = 15;
@@ -10,7 +9,6 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
     private int height = 800;
     private int score = 0;
     private String time = "00:00";
-
     private int direction = 3;
     private Timer timer;
     private boolean directionChanged = false;
@@ -92,26 +90,21 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
     public void setTime(String time) {
         this.time = time;
     }
-    Snake snake = new Snake(boardSize / 2 - 3,boardSize / 2, 1);
+
+    Snake snake = new Snake(boardSize / 2 - 3, boardSize / 2, 1);
 
     //endregion
     //region constructor
     public GameBoard() {
-
         setPreferredSize(new Dimension(getWidth(), getHeight()));
         setBackground(Color.black);
-        timer = new Timer(500, this);
+        timer = new Timer(350, this);
         timer.start();
-
 
         addKeyListener(this);
         setFocusable(true);
     }
 //endregion
-    
-    public void startGame(){
-
-    }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -124,16 +117,16 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
 
                 //playground
                 if ((i + j) % 2 == 0) {
-                    g.setColor(new Color(10,250,10));
+                    g.setColor(new Color(45, 79, 45));
                 } else {
-                    g.setColor(new Color(131, 179, 89));
+                    g.setColor(new Color(36, 55, 16));
                 }
                 g.fillRect(x, y, tileSize, tileSize);
             }
         }
 
         //Snake
-        g.setColor(Color.black);
+        g.setColor(new Color(227, 0, 255));
         g.fillRect(snake.getSnakeX() * tileSize, snake.getSnakeY() * tileSize, tileSize, tileSize);
 
         //score and time panel
@@ -148,26 +141,26 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
     }
 
     private void moveSnake() {
-
-        switch (direction) {
-            case 0:
-                snake.setSnakeY(snake.getSnakeY()-1);
-                break;
-            case 1:
-                snake.setSnakeY(snake.getSnakeY()+1);
-                break;
-            case 2:
-                snake.setSnakeX(snake.getSnakeX()-1);
-                break;
-            case 3:
-                snake.setSnakeX(snake.getSnakeX()+1);
-                break;
+        if (!directionChanged) {
+            switch (direction) {
+                case 0:
+                    snake.setSnakeY(snake.getSnakeY() - 1); // up
+                    break;
+                case 1:
+                    snake.setSnakeY(snake.getSnakeY() + 1); // down
+                    break;
+                case 2:
+                    snake.setSnakeX(snake.getSnakeX() - 1); // left
+                    break;
+                case 3:
+                    snake.setSnakeX(snake.getSnakeX() + 1); // right
+                    break;
+            }
         }
+        directionChanged = false;
     }
+
     private void updateTime() {
-        //aktualizace casu
-        //inkrementace sekund
-        //aktualiyace zobrazeni casu
     }
 
     //region ActionListener method
@@ -176,54 +169,51 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
         moveSnake();
         updateTime();
         repaint();
-
     }
     //endregion
     //region KeyListener methods
     @Override
     public void keyTyped(KeyEvent e) {
-
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
 
-        //zmena smeru podle stisknute klavesi
         switch (key) {
             case KeyEvent.VK_W:
-                if (direction != 1){
-                    direction = 0; //up
-                    //directionChanged = true;
+                if (direction != 1 || direction != getDirection()) {
+                    setDirection(0); // up
+                    directionChanged = true;
+                    moveSnake();
                 }
                 break;
             case KeyEvent.VK_S:
-                if (direction != 0){
-                    direction = 1; //down
-                    //directionChanged = true;
+                if (direction != 0) {
+                    setDirection(1); // down
+                    directionChanged = true;
+                    moveSnake();
                 }
                 break;
             case KeyEvent.VK_A:
-                if (direction != 3){
-                    direction = 2; //left
-                    //directionChanged = true;
+                if (direction != 3) {
+                    setDirection(2); // left
+                    directionChanged = true;
+                    moveSnake();
                 }
                 break;
             case KeyEvent.VK_D:
-                if (direction != 2){
-                    direction = 3; //right
-                    //directionChanged = true;
+                if (direction != 2) {
+                    setDirection(3); // right
+                    directionChanged = true;
+                    moveSnake();
                 }
                 break;
         }
-        moveSnake();
     }
-
 
     @Override
     public void keyReleased(KeyEvent e) {
-
     }
-
     //endregion
 }

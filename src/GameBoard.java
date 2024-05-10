@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class GameBoard extends JPanel implements ActionListener, KeyListener {
+    private long startTime;
     private int boardSize = 15;
     private int tileSize = 50;
     private int width = 750;
@@ -15,6 +16,14 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
 
 
     //region getters and setters
+
+    public long getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(long startTime) {
+        this.startTime = startTime;
+    }
 
     public boolean isDirectionChanged() {
         return directionChanged;
@@ -96,11 +105,12 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
     //endregion
     //region constructor
     public GameBoard() {
+        startTime = System.currentTimeMillis();
         setPreferredSize(new Dimension(getWidth(), getHeight()));
         setBackground(Color.black);
         timer = new Timer(350, this);
+        startGame();
         timer.start();
-
         addKeyListener(this);
         setFocusable(true);
     }
@@ -144,23 +154,71 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
         if (!directionChanged) {
             switch (direction) {
                 case 0:
-                    snake.setSnakeY(snake.getSnakeY() - 1); // up
+                    if (snake.getSnakeY() <= 0) { // up
+                        timer.stop();
+                        startGame();
+                    } else {
+                        snake.setSnakeY(snake.getSnakeY() - 1);
+                    }
                     break;
                 case 1:
-                    snake.setSnakeY(snake.getSnakeY() + 1); // down
+                    if (snake.getSnakeY() >= getBoardSize() - 1) { // down
+                        timer.stop();
+                        startGame();
+                    } else {
+                        snake.setSnakeY(snake.getSnakeY() + 1);
+                    }
                     break;
                 case 2:
-                    snake.setSnakeX(snake.getSnakeX() - 1); // left
+                    if (snake.getSnakeX() <= 0) { // left
+                        timer.stop();
+                        startGame();
+                    } else {
+                        snake.setSnakeX(snake.getSnakeX() - 1);
+                    }
                     break;
                 case 3:
-                    snake.setSnakeX(snake.getSnakeX() + 1); // right
+                    if (snake.getSnakeX() >= getBoardSize() - 1) { // right
+                        timer.stop();
+                        startGame();
+                    } else {
+                        snake.setSnakeX(snake.getSnakeX() + 1);
+                    }
                     break;
             }
         }
         directionChanged = false;
     }
+    private void startGame() {
+        int result = JOptionPane.showOptionDialog(this,
+                "Snake\nScore: " + score + "\nTime: " + time,
+                "Snake Game", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
+                null, new String[]{"Start Game"}, "Start Game");
+
+        if (result == 0) {
+            resetGame();
+        }
+    }
+
+    private void resetGame() {
+        setTime("00:00");
+        setScore(0);
+        snake.setSnakeX(boardSize / 2 - 3);
+        snake.setSnakeY(boardSize / 2);
+        direction = 3;
+        directionChanged = false;
+        timer.start();
+        startTime = System.currentTimeMillis();
+    }
 
     private void updateTime() {
+        long currentTime = System.currentTimeMillis();
+        long elapsedTime = currentTime - startTime;
+
+        int seconds = (int) (elapsedTime / 1000) % 60;
+        int minutes = (int) ((elapsedTime / (1000 * 60)) % 60);
+
+        time = String.format("%02d:%02d", minutes, seconds);
     }
 
     //region ActionListener method

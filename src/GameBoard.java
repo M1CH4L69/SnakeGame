@@ -8,22 +8,13 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
     private int tileSize = 50;
     private int width = 750;
     private int height = 800;
-    private int score = 0;
+
     private String time = "00:00";
     private int direction = 3;
     private Timer timer;
     private boolean directionChanged = false;
 
-
     //region getters and setters
-
-    public long getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(long startTime) {
-        this.startTime = startTime;
-    }
 
     public boolean isDirectionChanged() {
         return directionChanged;
@@ -40,7 +31,6 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
     public void setDirection(int direction) {
         this.direction = direction;
     }
-
 
     public Timer getTimer() {
         return timer;
@@ -84,14 +74,6 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
         this.height = height;
     }
 
-    public int getScore() {
-        return score;
-    }
-
-    public void setScore(int score) {
-        this.score = score;
-    }
-
     public String getTime() {
         return time;
     }
@@ -107,7 +89,6 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
     public GameBoard() {
         startTime = System.currentTimeMillis();
         setPreferredSize(new Dimension(getWidth(), getHeight()));
-        setBackground(Color.black);
         timer = new Timer(350, this);
         startGame();
         timer.start();
@@ -144,9 +125,9 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
         g.fillRect(0, 750, getWidth(), tileSize);
 
         //score and timetable
-        g.setColor(Color.white);
+        g.setColor(Color.white );
         g.setFont(new Font("Consolas", Font.PLAIN, 20));
-        g.drawString("Score: " + score, 20, 780);
+        g.drawString("Score: " + snake.getScore(), 20, 780);
         g.drawString("Time: " + time, 610, 780);
     }
 
@@ -191,23 +172,26 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
     }
     private void startGame() {
         int result = JOptionPane.showOptionDialog(this,
-                "Snake\nScore: " + score + "\nTime: " + time,
+                "Snake\nScore: " + snake.getScore() + "\nTime: " + time,
                 "Snake Game", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
-                null, new String[]{"Start Game"}, "Start Game");
+                null, new String[]{"Start Game", "Exit"}, "Start Game");
 
         if (result == 0) {
             resetGame();
+        }else if(result == 1){
+            System.exit(0);
         }
     }
 
     private void resetGame() {
         setTime("00:00");
-        setScore(0);
+        snake.setScore(0);
         snake.setSnakeX(boardSize / 2 - 3);
         snake.setSnakeY(boardSize / 2);
         direction = 3;
         directionChanged = false;
         timer.start();
+
         startTime = System.currentTimeMillis();
     }
 

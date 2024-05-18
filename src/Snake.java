@@ -1,5 +1,11 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+
 public class Snake {
 
+    private ArrayList<HashMap<Integer, Integer>>  body;
     private int snakeX;
     private int snakeY;
     private int snakeSize;
@@ -7,10 +13,12 @@ public class Snake {
 //region constructor
 
     public Snake(int snakeX, int snakeY, int snakeSize) {
+        body = new ArrayList<>();
         this.snakeX = snakeX;
         this.snakeY = snakeY;
         this.snakeSize = snakeSize;
         score = 0;
+
     }
 
     //endregion
@@ -47,5 +55,14 @@ public class Snake {
         this.score = score;
     }
 
-    //endregion
+    public ArrayList<HashMap<Integer, Integer>> getBody() {
+        return body;
+    }
+
+    public void setBody(ArrayList<HashMap<Integer, Integer>> body) {
+        this.body = body;
+    }
+//endregion
+
+
 }

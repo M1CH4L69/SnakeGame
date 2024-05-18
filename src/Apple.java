@@ -4,7 +4,9 @@ public class Apple {
 
     //region constructor
 
-    public Apple() {
+    public Apple(int appleX, int appleY) {
+        this.appleX = appleX;
+        this.appleY = appleY;
     }
 
     //endregion

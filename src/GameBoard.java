@@ -12,12 +12,20 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
     private int width = 750;
     private int height = 800;
     private String time = "00:00";
-    private int direction = 3;
     private Timer timer;
     private boolean directionChanged = false;
     Random random = new Random();
+    private ArrayList<Rock> rocks = new ArrayList<>();
 
     //region getters and setters
+
+    public ArrayList<Rock> getRocks() {
+        return rocks;
+    }
+
+    public void setRocks(ArrayList<Rock> rocks) {
+        this.rocks = rocks;
+    }
 
     public boolean isDirectionChanged() {
         return directionChanged;
@@ -25,14 +33,6 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
 
     public void setDirectionChanged(boolean directionChanged) {
         this.directionChanged = directionChanged;
-    }
-
-    public int getDirection() {
-        return direction;
-    }
-
-    public void setDirection(int direction) {
-        this.direction = direction;
     }
 
     public Timer getTimer() {
@@ -87,6 +87,8 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
 
     Snake snake = new Snake(boardSize / 2 - 3, boardSize / 2, 1);
     Apple apple = new Apple(boardSize / 2 - 2, boardSize / 2);
+    Rock rock = new Rock(random.nextInt(boardSize),random.nextInt(boardSize));
+
 
     //endregion
     //region constructor
@@ -128,12 +130,20 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
         g.setColor(Color.red);
         g.fillRect(apple.getAppleX() * tileSize, apple.getAppleY() * tileSize, tileSize, tileSize);
 
+        rocks.add(rock);
+        //rocks
+        g.setColor(Color.black);
+        for (int i = 0; i < rocks.size(); i++) {
+            Rock rock = rocks.get(i);
+            g.fillRect(rock.getRockX() * tileSize, rock.getRockY() * tileSize, tileSize, tileSize);
+        }
+
         //score and time panel
         g.setColor(Color.gray);
         g.fillRect(0, 750, getWidth(), tileSize);
 
         //score and timetable
-        g.setColor(Color.white );
+        g.setColor(Color.white);
         g.setFont(new Font("Consolas", Font.PLAIN, 20));
         g.drawString("Score: " + snake.getScore(), 20, 780);
         g.drawString("Time: " + time, 610, 780);
@@ -141,7 +151,7 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
 
     public void moveSnake() {
         if (!directionChanged) {
-            switch (direction) {
+            switch (snake.getDirection()) {
                 case 0:
                     if (snake.getSnakeY() <= 0) { // up
                         timer.stop();
@@ -201,12 +211,17 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
     public void resetGame() {
         setTime("00:00");
         snake.setScore(0);
+        snake.setBody(new ArrayList<>());
         snake.setSnakeX(boardSize / 2 - 3);
         snake.setSnakeY(boardSize / 2);
-        direction = 3;
+
+        apple.setAppleX(boardSize / 2 - 2);
+        apple.setAppleY(boardSize / 2);
+        snake.setDirection(3);
         directionChanged = false;
         timer.start();
         startTime = System.currentTimeMillis();
+        rocks.clear();
     }
 
     public void updateTime() {
@@ -217,17 +232,34 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
         int minutes = (int) ((elapsedTime / (1000 * 60)) % 60);
 
         time = String.format("%02d:%02d", minutes, seconds);
+        if (seconds == 59) {
+            Rock newRock = new Rock(random.nextInt(boardSize), random.nextInt(boardSize));
+            rocks.add(newRock);
+        }
     }
 
-    public void grow(){
-        if (snake.getSnakeX() == apple.getAppleX() && snake.getSnakeY() == apple.getAppleY()){
-            snake.setScore(snake.getScore()+1);
+    public void grow() {
+        if (snake.getSnakeX() == apple.getAppleX() && snake.getSnakeY() == apple.getAppleY()) {
+            for (int i = 0; i < rocks.size(); i++) {
+                Rock rock = rocks.get(i);
+                rock.setRockX(random.nextInt(boardSize));
+                rock.setRockY(random.nextInt(boardSize));
+            }
+            snake.setScore(snake.getScore() + 1);
             HashMap<Integer, Integer> map = new HashMap<>();
             map.put(apple.getAppleX(), apple.getAppleY());
             apple.setAppleX(random.nextInt(boardSize));
             apple.setAppleY(random.nextInt(boardSize));
             snake.getBody().add(map);
             System.out.println(snake.getBody());
+        } else {
+            for (int i = 0; i < rocks.size(); i++) {
+                Rock rock = rocks.get(i);
+                if (snake.getSnakeX() == rock.getRockX() && snake.getSnakeY() == rock.getRockY()) {
+                    startGame();
+                    return;
+                }
+            }
         }
     }
 
@@ -250,29 +282,29 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
 
         switch (key) {
             case KeyEvent.VK_W:
-                if (direction != 1 || direction != getDirection()) {
-                    setDirection(0); // up
+                if (snake.getDirection() != 1 || snake.getDirection() != snake.getDirection()) {
+                    snake.setDirection(0); // up
                     directionChanged = true;
                     moveSnake();
                 }
                 break;
             case KeyEvent.VK_S:
-                if (direction != 0) {
-                    setDirection(1); // down
+                if (snake.getDirection() != 0) {
+                    snake.setDirection(1); // down
                     directionChanged = true;
                     moveSnake();
                 }
                 break;
             case KeyEvent.VK_A:
-                if (direction != 3) {
-                    setDirection(2); // left
+                if (snake.getDirection() != 3) {
+                    snake.setDirection(2); // left
                     directionChanged = true;
                     moveSnake();
                 }
                 break;
             case KeyEvent.VK_D:
-                if (direction != 2) {
-                    setDirection(3); // right
+                if (snake.getDirection() != 2) {
+                    snake.setDirection(3); // right
                     directionChanged = true;
                     moveSnake();
                 }
@@ -283,5 +315,5 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
     }
-    //endregion
+//endregion
 }

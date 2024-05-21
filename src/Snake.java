@@ -10,6 +10,7 @@ public class Snake {
     private int snakeY;
     private int snakeSize;
     private int score;
+    private int direction = 3;
 //region constructor
 
     public Snake(int snakeX, int snakeY, int snakeSize) {
@@ -23,6 +24,14 @@ public class Snake {
 
     //endregion
     //region getters and setters
+
+    public int getDirection() {
+        return direction;
+    }
+
+    public void setDirection(int direction) {
+        this.direction = direction;
+    }
     public int getSnakeX() {
         return snakeX;
     }

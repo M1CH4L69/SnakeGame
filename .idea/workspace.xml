@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff24e287-8259-4c61-9541-8238ac933611" name="Changes" comment="Creating a Snake class">
-      <change afterPath="$PROJECT_DIR$/src/Rock.java" afterDir="false" />
+    <list default="true" id="ff24e287-8259-4c61-9541-8238ac933611" name="Changes" comment="Creating a Rock class that marks an obstacle that the snake must not touch otherwise the game ends. After 59 seconds, 3 more rocks are added to the game (one after 350 ms). The &quot;direction&quot; variable was moved to Snake class.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Snake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Snake.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -71,7 +69,7 @@
       <workItem from="1714506187399" duration="2011000" />
       <workItem from="1716025489315" duration="379000" />
       <workItem from="1716031194057" duration="1346000" />
-      <workItem from="1716312975806" duration="3072000" />
+      <workItem from="1716312975806" duration="5023000" />
     </task>
     <task id="LOCAL-00001" summary="Creating a game window and graphics of the playing field">
       <created>1712947768606</created>
@@ -87,7 +85,14 @@
       <option name="project" value="LOCAL" />
       <updated>1714498025598</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Creating a Rock class that marks an obstacle that the snake must not touch otherwise the game ends. After 59 seconds, 3 more rocks are added to the game (one after 350 ms). The &quot;direction&quot; variable was moved to Snake class.">
+      <created>1716316368193</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1716316368193</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -107,6 +112,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Creating a game window and graphics of the playing field" />
     <MESSAGE value="Creating a Snake class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Creating a Snake class" />
+    <MESSAGE value="Creating a Rock class that marks an obstacle that the snake must not touch otherwise the game ends. After 59 seconds, 3 more rocks are added to the game (one after 350 ms). The &quot;direction&quot; variable was moved to Snake class." />
+    <option name="LAST_COMMIT_MESSAGE" value="Creating a Rock class that marks an obstacle that the snake must not touch otherwise the game ends. After 59 seconds, 3 more rocks are added to the game (one after 350 ms). The &quot;direction&quot; variable was moved to Snake class." />
   </component>
 </project>

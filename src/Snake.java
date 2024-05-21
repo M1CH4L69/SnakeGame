@@ -1,7 +1,5 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 
 public class Snake {
 
@@ -19,7 +17,6 @@ public class Snake {
         this.snakeY = snakeY;
         this.snakeSize = snakeSize;
         score = 0;
-
     }
 
     //endregion
@@ -72,6 +69,4 @@ public class Snake {
         this.body = body;
     }
 //endregion
-
-
 }

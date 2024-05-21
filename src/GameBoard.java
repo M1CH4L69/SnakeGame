@@ -84,12 +84,6 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
     public void setTime(String time) {
         this.time = time;
     }
-
-    Snake snake = new Snake(boardSize / 2 - 3, boardSize / 2, 1);
-    Apple apple = new Apple(boardSize / 2 - 2, boardSize / 2);
-    Rock rock = new Rock(random.nextInt(boardSize),random.nextInt(boardSize));
-
-
     //endregion
     //region constructor
     public GameBoard() {
@@ -102,6 +96,10 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
         setFocusable(true);
     }
 //endregion
+
+    Snake snake = new Snake(boardSize / 2 - 3, boardSize / 2, 1);
+    Apple apple = new Apple(boardSize / 2 - 2, boardSize / 2);
+    Rock rock = new Rock(random.nextInt(boardSize),random.nextInt(boardSize));
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -153,7 +151,7 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
         if (!directionChanged) {
             switch (snake.getDirection()) {
                 case 0:
-                    if (snake.getSnakeY() <= 0) { // up
+                    if (snake.getSnakeY() <= 0 || snake.getSnakeX() == rock.getRockX() && snake.getSnakeY()-1 == rock.getRockY()) { // up
                         timer.stop();
                         startGame();
                     } else {
@@ -162,8 +160,7 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
                     }
                     break;
                 case 1:
-                    if (snake.getSnakeY() >= getBoardSize() - 1) { // down
-
+                    if (snake.getSnakeY() >= getBoardSize() - 1 || snake.getSnakeX() == rock.getRockX() && snake.getSnakeY()+1 == rock.getRockY()) { // down
                         timer.stop();
                         startGame();
                     } else {
@@ -172,8 +169,7 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
                     }
                     break;
                 case 2:
-                    if (snake.getSnakeX() <= 0) { // left
-
+                    if (snake.getSnakeX() <= 0 || snake.getSnakeX() == rock.getRockX()+1 && snake.getSnakeY() == rock.getRockY()) { // left
                         timer.stop();
                         startGame();
                     } else {
@@ -182,8 +178,7 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
                     }
                     break;
                 case 3:
-                    if (snake.getSnakeX() >= getBoardSize() - 1) { // right
-
+                    if (snake.getSnakeX() >= getBoardSize() - 1 || snake.getSnakeX() == rock.getRockX()-1 && snake.getSnakeY() == rock.getRockY()) { // right
                         timer.stop();
                         startGame();
                     } else {
@@ -214,10 +209,9 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
         snake.setBody(new ArrayList<>());
         snake.setSnakeX(boardSize / 2 - 3);
         snake.setSnakeY(boardSize / 2);
-
+        snake.setDirection(3);
         apple.setAppleX(boardSize / 2 - 2);
         apple.setAppleY(boardSize / 2);
-        snake.setDirection(3);
         directionChanged = false;
         timer.start();
         startTime = System.currentTimeMillis();
@@ -252,14 +246,6 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
             apple.setAppleY(random.nextInt(boardSize));
             snake.getBody().add(map);
             System.out.println(snake.getBody());
-        } else {
-            for (int i = 0; i < rocks.size(); i++) {
-                Rock rock = rocks.get(i);
-                if (snake.getSnakeX() == rock.getRockX() && snake.getSnakeY() == rock.getRockY()) {
-                    startGame();
-                    return;
-                }
-            }
         }
     }
 

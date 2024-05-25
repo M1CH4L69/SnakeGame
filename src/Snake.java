@@ -2,26 +2,26 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Snake {
-
-    private ArrayList<HashMap<Integer, Integer>>  body;
+    private ArrayList<HashMap<Integer, Integer>> body;
     private int snakeX;
     private int snakeY;
     private int snakeSize;
     private int score;
     private int direction = 3;
 //region constructor
-
-    public Snake(int snakeX, int snakeY, int snakeSize) {
-        body = new ArrayList<>();
-        this.snakeX = snakeX;
-        this.snakeY = snakeY;
-        this.snakeSize = snakeSize;
-        score = 0;
-    }
+public Snake(int snakeX, int snakeY, int snakeSize) {
+    body = new ArrayList<>();
+    HashMap<Integer, Integer> head = new HashMap<>();
+    head.put(snakeX, snakeY);
+    body.add(head);
+    this.snakeX = snakeX;
+    this.snakeY = snakeY;
+    this.snakeSize = snakeSize;
+    score = 0;
+}
 
     //endregion
-    //region getters and setters
-
+//region getters and setters
     public int getDirection() {
         return direction;
     }
@@ -29,6 +29,7 @@ public class Snake {
     public void setDirection(int direction) {
         this.direction = direction;
     }
+
     public int getSnakeX() {
         return snakeX;
     }
@@ -68,5 +69,5 @@ public class Snake {
     public void setBody(ArrayList<HashMap<Integer, Integer>> body) {
         this.body = body;
     }
-//endregion
+    //endregion
 }

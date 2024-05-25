@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff24e287-8259-4c61-9541-8238ac933611" name="Changes" comment="Modification of the condition for ending the game after hitting a rock.">
+    <list default="true" id="ff24e287-8259-4c61-9541-8238ac933611" name="Changes" comment="1. Created the check() method to check if the snake hit a stone.&#10;2. Monitoring the situation, if a rock is formed on an apple, a new apple is formed on the playing field.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Snake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Snake.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +71,9 @@
       <workItem from="1716025489315" duration="379000" />
       <workItem from="1716031194057" duration="1346000" />
       <workItem from="1716312975806" duration="6327000" />
-      <workItem from="1716571566794" duration="6609000" />
+      <workItem from="1716571566794" duration="9439000" />
+      <workItem from="1716581114504" duration="819000" />
+      <workItem from="1716656468940" duration="7420000" />
     </task>
     <task id="LOCAL-00001" summary="Creating a game window and graphics of the playing field">
       <created>1712947768606</created>
@@ -99,7 +103,14 @@
       <option name="project" value="LOCAL" />
       <updated>1716318519348</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="1. Created the check() method to check if the snake hit a stone.&#10;2. Monitoring the situation, if a rock is formed on an apple, a new apple is formed on the playing field.">
+      <created>1716578442785</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1716578442785</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -121,17 +132,7 @@
     <MESSAGE value="Creating a Snake class" />
     <MESSAGE value="Creating a Rock class that marks an obstacle that the snake must not touch otherwise the game ends. After 59 seconds, 3 more rocks are added to the game (one after 350 ms). The &quot;direction&quot; variable was moved to Snake class." />
     <MESSAGE value="Modification of the condition for ending the game after hitting a rock." />
-    <option name="LAST_COMMIT_MESSAGE" value="Modification of the condition for ending the game after hitting a rock." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/GameBoard.java</url>
-          <line>103</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="1. Created the check() method to check if the snake hit a stone.&#10;2. Monitoring the situation, if a rock is formed on an apple, a new apple is formed on the playing field." />
+    <option name="LAST_COMMIT_MESSAGE" value="1. Created the check() method to check if the snake hit a stone.&#10;2. Monitoring the situation, if a rock is formed on an apple, a new apple is formed on the playing field." />
   </component>
 </project>

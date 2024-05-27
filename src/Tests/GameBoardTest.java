@@ -94,6 +94,7 @@ public class GameBoardTest {
         assertEquals(apple.getAppleX(), 5);
         assertEquals(apple.getAppleY(), 7);
     }
+
     @Test
     public void isAnAppleOnTheSnake() {
 
@@ -118,28 +119,32 @@ public class GameBoardTest {
         snake.setBody(body);
         gameBoard.setSnake(snake);
 
+        Apple apple = new Apple(4, 5);
         gameBoard.placeApple();
-        Apple apple = gameBoard.getApple();
 
         boolean isAppleOnSnake = false;
         for (HashMap<Integer, Integer> segment : body) {
-            if (segment.containsKey(apple.getAppleX()) && segment.get(apple.getAppleX()) == apple.getAppleY()) {
+            int x = segment.keySet().iterator().next();
+            int y = segment.get(x);
+            if (x == apple.getAppleX() && y == apple.getAppleY()) {
+                isAppleOnSnake = true;
+                break;
+            }
+        }
+        assertTrue(isAppleOnSnake);
+
+        Apple apple2 = new Apple(7, 7);
+        gameBoard.placeApple();
+
+        isAppleOnSnake = false;
+        for (HashMap<Integer, Integer> segment : body) {
+            int x = segment.keySet().iterator().next();
+            int y = segment.get(x);
+            if (x == apple2.getAppleX() && y == apple2.getAppleY()) {
                 isAppleOnSnake = true;
                 break;
             }
         }
         assertFalse(isAppleOnSnake);
-
-        gameBoard.placeApple();
-        Apple apple2 = gameBoard.getApple();
-
-        boolean isApple2OnSnake = false;
-        for (HashMap<Integer, Integer> segment : body) {
-            if (segment.containsKey(apple2.getAppleX()) && segment.get(apple2.getAppleX()) == apple2.getAppleY()) {
-                isApple2OnSnake = true;
-                break;
-            }
-        }
-        assertFalse(isApple2OnSnake);
     }
 }

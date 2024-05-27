@@ -4,17 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff24e287-8259-4c61-9541-8238ac933611" name="Changes" comment="Splitting the grow() method into smaller parts (the placeApple() method for adding an apple). Another method to find out if the square we want to place something on (apple/rock) is empty or not. A method for determining whether a snake has hit its head on any part of its body. Last but not least, a change in the rendering of the snake. Adding the head of the snake in the constructor of the Snake class. Changing the shape of the snake's body and apples.">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Tests/GameBoardTest.java" afterDir="false" />
+    <list default="true" id="ff24e287-8259-4c61-9541-8238ac933611" name="Changes" comment="5 unit tests.&#10;Some getters and setters in Gameboard class.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snake_0.1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Snake_0.1.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Apple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Snake/Apple.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Snake/GameBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Snake/GameWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Snake/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Rock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Snake/Rock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Snake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Snake/Snake.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tests/GameBoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/GameBoardTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +69,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.GameBoardTest.placeApple">
+  <component name="RunManager" selected="JUnit.GameBoardTest.isAnAppleOnTheSnake">
     <configuration name="GameBoardTest.collision" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Snake_0.1" />
       <extension name="coverage">
@@ -94,22 +86,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GameBoardTest.collisionWithSelf" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Snake_0.1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Tests" />
-      <option name="MAIN_CLASS_NAME" value="Tests.GameBoardTest" />
-      <option name="METHOD_NAME" value="collisionWithSelf" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="GameBoardTest.getGameBoardSize" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Snake_0.1" />
       <extension name="coverage">
@@ -121,6 +97,22 @@
       <option name="PACKAGE_NAME" value="Tests" />
       <option name="MAIN_CLASS_NAME" value="Tests.GameBoardTest" />
       <option name="METHOD_NAME" value="getGameBoardSize" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameBoardTest.isAnAppleOnTheSnake" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Snake_0.1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Tests" />
+      <option name="MAIN_CLASS_NAME" value="Tests.GameBoardTest" />
+      <option name="METHOD_NAME" value="isAnAppleOnTheSnake" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -160,11 +152,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.GameBoardTest.isAnAppleOnTheSnake" />
         <item itemvalue="JUnit.GameBoardTest.placeApple" />
         <item itemvalue="JUnit.GameBoardTest.makingRocks" />
         <item itemvalue="JUnit.GameBoardTest.getGameBoardSize" />
         <item itemvalue="JUnit.GameBoardTest.collision" />
-        <item itemvalue="JUnit.GameBoardTest.collisionWithSelf" />
       </list>
     </recent_temporary>
   </component>
@@ -189,7 +181,7 @@
       <workItem from="1716581114504" duration="819000" />
       <workItem from="1716656468940" duration="8123000" />
       <workItem from="1716728399348" duration="4500000" />
-      <workItem from="1716821234113" duration="3465000" />
+      <workItem from="1716821234113" duration="4899000" />
     </task>
     <task id="LOCAL-00001" summary="Creating a game window and graphics of the playing field">
       <created>1712947768606</created>
@@ -233,7 +225,14 @@
       <option name="project" value="LOCAL" />
       <updated>1716668566649</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="5 unit tests.&#10;Some getters and setters in Gameboard class.">
+      <created>1716825181463</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1716825181463</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -257,6 +256,7 @@
     <MESSAGE value="Modification of the condition for ending the game after hitting a rock." />
     <MESSAGE value="1. Created the check() method to check if the snake hit a stone.&#10;2. Monitoring the situation, if a rock is formed on an apple, a new apple is formed on the playing field." />
     <MESSAGE value="Splitting the grow() method into smaller parts (the placeApple() method for adding an apple). Another method to find out if the square we want to place something on (apple/rock) is empty or not. A method for determining whether a snake has hit its head on any part of its body. Last but not least, a change in the rendering of the snake. Adding the head of the snake in the constructor of the Snake class. Changing the shape of the snake's body and apples." />
-    <option name="LAST_COMMIT_MESSAGE" value="Splitting the grow() method into smaller parts (the placeApple() method for adding an apple). Another method to find out if the square we want to place something on (apple/rock) is empty or not. A method for determining whether a snake has hit its head on any part of its body. Last but not least, a change in the rendering of the snake. Adding the head of the snake in the constructor of the Snake class. Changing the shape of the snake's body and apples." />
+    <MESSAGE value="5 unit tests.&#10;Some getters and setters in Gameboard class." />
+    <option name="LAST_COMMIT_MESSAGE" value="5 unit tests.&#10;Some getters and setters in Gameboard class." />
   </component>
 </project>

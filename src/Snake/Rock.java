@@ -1,3 +1,5 @@
+package Snake;
+
 public class Rock {
     private int rockX;
     private int rockY;

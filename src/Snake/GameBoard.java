@@ -1,3 +1,5 @@
+package Snake;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -17,7 +19,38 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
     private boolean directionChanged = false;
     Random random = new Random();
     private ArrayList<Rock> rocks = new ArrayList<>();
+    private Snake snake = new Snake(boardSize / 2 - 3, boardSize / 2, 1);
+    private Apple apple = new Apple(boardSize / 2 - 2, boardSize / 2);
 //region getters and setters
+
+    public void setBoardSize(int boardSize) {
+        this.boardSize = boardSize;
+    }
+
+    public Snake getSnake() {
+        return snake;
+    }
+
+    public void setSnake(Snake snake) {
+        this.snake = snake;
+    }
+
+    public ArrayList<Rock> getRocks() {
+        return rocks;
+    }
+
+    public void setRocks(ArrayList<Rock> rocks) {
+        this.rocks = rocks;
+    }
+
+    public Apple getApple() {
+        return apple;
+    }
+
+    public void setApple(Apple apple) {
+        this.apple = apple;
+    }
+
     public int getBoardSize() {
         return boardSize;
     }
@@ -47,8 +80,7 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
         setFocusable(true);
     }
 //endregion
-    Snake snake = new Snake(boardSize / 2 - 3, boardSize / 2, 1);
-    Apple apple = new Apple(boardSize / 2 - 2, boardSize / 2);
+
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -67,7 +99,7 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
                 g.fillRect(x, y, tileSize, tileSize);
             }
         }
-        // Snake
+        // Snake.Snake
         ArrayList<HashMap<Integer, Integer>> body = snake.getBody();
         for (int i = 0; i < body.size(); i++) {
             HashMap<Integer, Integer> segment = body.get(i);
@@ -83,7 +115,7 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
             }
         }
 
-        // Apple
+        // Snake.Snake.Apple
         g.setColor(Color.red);
         g.fillOval(apple.getAppleX() * tileSize + 3, apple.getAppleY() * tileSize + 3, tileSize - 6, tileSize - 6);
 
@@ -171,14 +203,14 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
 
     public void startGame() {
         rocks.clear();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 2; i++) {
             Rock rock = new Rock(random.nextInt(boardSize), random.nextInt(boardSize));
             while (isOccupied(rock.getRockX(), rock.getRockY())) {
                 rock = new Rock(random.nextInt(boardSize), random.nextInt(boardSize));
             }
             rocks.add(rock);
         }
-        int result = JOptionPane.showOptionDialog(this, "Snake\nScore: " + snake.getScore() + "\nTime: " + time, "Snake Game", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new String[]{"Start Game", "Exit"}, "Start Game");
+        int result = JOptionPane.showOptionDialog(this, "Snake\nScore: " + snake.getScore() + "\nTime: " + time, "Snake.Snake Game", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new String[]{"Start Game", "Exit"}, "Start Game");
 
         if (result == 0) {
             resetGame();

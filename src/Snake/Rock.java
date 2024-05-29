@@ -1,7 +1,17 @@
 package Snake;
 
+/**
+ * A class representing an obstacle
+ */
 public class Rock {
+
+    /**
+     * This variable specifies the X coordinate of the obstacle
+     */
     private int rockX;
+    /**
+     * This variable specifies the Y coordinate of the obstacle
+     */
     private int rockY;
 
     //region constructor

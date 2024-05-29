@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff24e287-8259-4c61-9541-8238ac933611" name="Changes" comment="5 unit tests.&#10;Some getters and setters in Gameboard class.">
+    <list default="true" id="ff24e287-8259-4c61-9541-8238ac933611" name="Changes" comment="5 unit tests.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tests/GameBoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/GameBoardTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Snake/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Snake/GameBoard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,22 +39,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "create.test.in.the.same.root": "true",
-    "last_opened_file_path": "D:/Snake_0.3"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;create.test.in.the.same.root&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Snake_0.3&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="" />
@@ -69,7 +69,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.GameBoardTest.isAnAppleOnTheSnake">
+  <component name="RunManager">
     <configuration name="GameBoardTest.collision" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Snake_0.1" />
       <extension name="coverage">
@@ -181,7 +181,9 @@
       <workItem from="1716581114504" duration="819000" />
       <workItem from="1716656468940" duration="8123000" />
       <workItem from="1716728399348" duration="4500000" />
-      <workItem from="1716821234113" duration="4899000" />
+      <workItem from="1716821234113" duration="5643000" />
+      <workItem from="1716827171304" duration="626000" />
+      <workItem from="1716986531677" duration="2961000" />
     </task>
     <task id="LOCAL-00001" summary="Creating a game window and graphics of the playing field">
       <created>1712947768606</created>
@@ -232,7 +234,14 @@
       <option name="project" value="LOCAL" />
       <updated>1716825181463</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="5 unit tests.">
+      <created>1716826255852</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1716826255852</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -257,6 +266,7 @@
     <MESSAGE value="1. Created the check() method to check if the snake hit a stone.&#10;2. Monitoring the situation, if a rock is formed on an apple, a new apple is formed on the playing field." />
     <MESSAGE value="Splitting the grow() method into smaller parts (the placeApple() method for adding an apple). Another method to find out if the square we want to place something on (apple/rock) is empty or not. A method for determining whether a snake has hit its head on any part of its body. Last but not least, a change in the rendering of the snake. Adding the head of the snake in the constructor of the Snake class. Changing the shape of the snake's body and apples." />
     <MESSAGE value="5 unit tests.&#10;Some getters and setters in Gameboard class." />
-    <option name="LAST_COMMIT_MESSAGE" value="5 unit tests.&#10;Some getters and setters in Gameboard class." />
+    <MESSAGE value="5 unit tests." />
+    <option name="LAST_COMMIT_MESSAGE" value="5 unit tests." />
   </component>
 </project>

@@ -1,7 +1,17 @@
 package Snake;
 
+/**
+ * A class representing an apple
+ */
 public class Apple {
+
+    /**
+     * This variable specifies the X coordinate of the apple
+     */
     private int appleX;
+    /**
+     * This variable specifies the Y coordinate of the apple
+     */
     private int appleY;
 
     //region constructor

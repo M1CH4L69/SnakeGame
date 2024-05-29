@@ -2,6 +2,9 @@ package Snake;
 
 import javax.swing.*;
 
+/**
+ * A class representing a JPanel
+ */
 public class GameWindow extends JFrame{
 
     //region constructor

@@ -8,20 +8,56 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Random;
 
+/**
+ * GameBoard is a class to store all dimensions and functions for a game
+ */
 public class GameBoard extends JPanel implements ActionListener, KeyListener {
+    /**
+     * This variable is used to hold the initial time when the game starts or is restarted
+     */
     private long startTime;
+    /**
+     * This variable means the size of the playing field in tiles
+     */
     private int boardSize = 15;
+    /**
+     * This variable represents the size of the tile in pixels
+     */
     private int tileSize = 50;
+    /**
+     * This variable represents the width of the game board in pixels
+     */
     private int width = 750;
+    /**
+     * This variable represents the height of the game board in pixels
+     */
     private int height = 800;
+    /**
+     * This variable represents a text string of time
+     */
     private String time = "00:00";
+    /**
+     * This variable represents a timer
+     */
     private Timer timer;
+    /**
+     * This variable represents the truth value of whether the snake's direction of movement has changed or not
+     */
     private boolean directionChanged = false;
-    Random random = new Random();
+    /**
+     * This variable represents a sheet of rocks (obstacles) on the playing field
+     */
     private ArrayList<Rock> rocks = new ArrayList<>();
+    Random random = new Random();
+    /**
+     * This variable represents a snake object
+     */
     private Snake snake = new Snake(boardSize / 2 - 3, boardSize / 2, 1);
+    /**
+     * This variable represents an apple object
+     */
     private Apple apple = new Apple(boardSize / 2 - 2, boardSize / 2);
-//region getters and setters
+    //region getters and setters
 
     public void setBoardSize(int boardSize) {
         this.boardSize = boardSize;
@@ -81,11 +117,19 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
     }
 //endregion
 
-
+    /**
+     * This method is intended for the graphic part of the project
+     * In the first part to create the playing field (inner cycle for rows, outer cycle is for columns) and is supplemented with a condition that guarantees that the field will be two-colored like a checkerboard
+     * In the second part for the rendered snake. It goes through its entire body thanks to the iterator, and the head is painted in blue, the rest of the snake in pink. The snake's body is a few pixels smaller than the size of the tile
+     * In the third part for rendering the apple
+     * In the fourth part for rendering the obstacles
+     * In the fifth part, the score and time panel + score and time display is drawn
+     * @param g the <code>Graphics</code> object to protect
+     */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        // Playground
+        //playground
         for (int i = 0; i < boardSize; i++) {
             for (int j = 0; j < boardSize; j++) {
                 int x = j * tileSize;
@@ -99,7 +143,7 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
                 g.fillRect(x, y, tileSize, tileSize);
             }
         }
-        // Snake.Snake
+        //snake
         ArrayList<HashMap<Integer, Integer>> body = snake.getBody();
         for (int i = 0; i < body.size(); i++) {
             HashMap<Integer, Integer> segment = body.get(i);
@@ -136,6 +180,11 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
         g.drawString("Time: " + time, 610, 780);
     }
 
+    /**
+     * This method checks whether the snake has hit an obstacle by going through the entire list of stones and comparing the coordinates of the snake with the coordinates of the obstacle
+     * Furthermore, the isCollisionWithSelf method is used to check whether it has collided with another part of its body
+     */
+
     public void check() {
         Iterator<Rock> iterator = rocks.iterator();
         while (iterator.hasNext()) {
@@ -153,6 +202,10 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
         }
     }
 
+    /**
+     * A method for moving the snake and checking if the snake has hit the edge of the board
+     * After crashing or otherwise ending the game, a panel will appear in which a new game can be started
+     */
     public void moveSnake() {
         if (!directionChanged) {
             HashMap<Integer, Integer> newHead = new HashMap<>();
@@ -201,6 +254,12 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
         directionChanged = false;
     }
 
+    /**
+     * Method for starting the game
+     * A window will appear where the user can decide whether he wants to play or turn off the game
+     * If the user selects a new game, stones and a snake will appear on the playing field and the user can play immediately. If he clicks Exit, the game will shut down
+     */
+
     public void startGame() {
         rocks.clear();
         for (int i = 0; i < 2; i++) {
@@ -219,6 +278,10 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
         }
     }
 
+    /**
+     * A method to reset the game
+     * the time is set to 00:00, the score is set to 0, the snake's body is set to its original size, the snake's direction is set to the right, the first apple is set right next to the snake's head in the direction of its movement, and the obstacle sheet is cleared
+     */
     public void resetGame() {
         setTime("00:00");
         snake.setScore(0);
@@ -237,6 +300,10 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
         rocks.clear();
     }
 
+    /**
+     * A method for counting time
+     * The number of obstacles on the board is also updated here
+     */
     public void updateTime() {
         long currentTime = System.currentTimeMillis();
         long elapsedTime = currentTime - startTime;
@@ -254,6 +321,12 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
         }
     }
 
+    /**
+     * This method checks if the snake has eaten the apple and grows the snake if it has
+     * If the snake's head is at the same position as the apple, the snake's score is increased, a new apple is placed on the board, and the method returns {@code true}.
+     * Otherwise, the method returns {@code false}.
+     * @return {@code true} if the snake has eaten the apple and grown, {@code false} otherwise
+     */
     public boolean grow() {
         if (snake.getSnakeX() == apple.getAppleX() && snake.getSnakeY() == apple.getAppleY()) {
             snake.setScore(snake.getScore() + 1);
@@ -263,6 +336,10 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
         return false;
     }
 
+    /**
+     * A method for placing an apple on the board
+     */
+
     public void placeApple() {
         do {
             apple.setAppleX(random.nextInt(boardSize));
@@ -270,6 +347,14 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
         } while (isOccupied(apple.getAppleX(), apple.getAppleY()));
     }
 
+    /**
+     * This method checks if the specified coordinates (x, y) are occupied by the snake or a rock
+     * The method iterates through the snake's body segments and the list of rocks to determine if any segment or rock is at the specified coordinates
+     *
+     * @param x the x-coordinate to check
+     * @param y the y-coordinate to check
+     * @return {@code true} if the coordinates are occupied by the snake or a rock, {@code false} otherwise
+     */
     public boolean isOccupied(int x, int y) {
         for (HashMap<Integer, Integer> segment : snake.getBody()) {
             if (segment.containsKey(x) && segment.get(x) == y) {
@@ -284,6 +369,10 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
         return false;
     }
 
+    /**
+     * A method for checking if a snake has hit another part of its body
+     * @return {@code true} if his had hit his body, {@code false} otherwise
+     */
     public boolean isCollisionWithSelf() {
         HashMap<Integer, Integer> head = snake.getBody().get(0);
         for (int i = 1; i < snake.getBody().size(); i++) {
@@ -305,6 +394,10 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
     public void keyTyped(KeyEvent e) {
     }
 
+    /**
+     * A method that takes input from the keyboard
+     * @param e the event to be processed
+     */
     @Override
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();

@@ -91,8 +91,8 @@ public class GameBoardTest {
     @Test
     public void drawAnApple() {
         Apple apple = gameBoard.getApple();
-        assertEquals(apple.getAppleX(), 5);
-        assertEquals(apple.getAppleY(), 7);
+        assertEquals(apple.getX(), 5);
+        assertEquals(apple.getY(), 7);
     }
 
     @Test
@@ -126,7 +126,7 @@ public class GameBoardTest {
         for (HashMap<Integer, Integer> segment : body) {
             int x = segment.keySet().iterator().next();
             int y = segment.get(x);
-            if (x == apple.getAppleX() && y == apple.getAppleY()) {
+            if (x == apple.getX() && y == apple.getY()) {
                 isAppleOnSnake = true;
                 break;
             }
@@ -140,7 +140,7 @@ public class GameBoardTest {
         for (HashMap<Integer, Integer> segment : body) {
             int x = segment.keySet().iterator().next();
             int y = segment.get(x);
-            if (x == apple2.getAppleX() && y == apple2.getAppleY()) {
+            if (x == apple2.getX() && y == apple2.getY()) {
                 isAppleOnSnake = true;
                 break;
             }

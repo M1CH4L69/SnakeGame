@@ -3,7 +3,7 @@ package Snake;
 /**
  * A class representing an obstacle
  */
-public class Rock {
+public class Rock implements Suplements{
 
     /**
      * This variable specifies the X coordinate of the obstacle
@@ -24,22 +24,23 @@ public class Rock {
     //endregion
     //region getters and setters
 
-    public int getRockX() {
-        return rockX;
-    }
-
     public void setRockX(int rockX) {
         this.rockX = rockX;
-    }
-
-    public int getRockY() {
-        return rockY;
     }
 
     public void setRockY(int rockY) {
         this.rockY = rockY;
     }
 
+    @Override
+    public int getX() {
+        return rockX;
+    }
+
+    @Override
+    public int getY() {
+        return rockY;
+    }
+
     //endregion
 }
-

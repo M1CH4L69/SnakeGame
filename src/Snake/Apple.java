@@ -3,7 +3,7 @@ package Snake;
 /**
  * A class representing an apple
  */
-public class Apple {
+public class Apple implements Suplements{
 
     /**
      * This variable specifies the X coordinate of the apple
@@ -24,20 +24,22 @@ public class Apple {
     //endregion
     //region getters and setters
 
-    public int getAppleX() {
-        return appleX;
-    }
-
     public void setAppleX(int appleX) {
         this.appleX = appleX;
     }
 
-    public int getAppleY() {
-        return appleY;
-    }
-
     public void setAppleY(int appleY) {
         this.appleY = appleY;
+    }
+
+    @Override
+    public int getX() {
+        return appleX;
+    }
+
+    @Override
+    public int getY() {
+        return appleY;
     }
 
     //endregion

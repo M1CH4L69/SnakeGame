@@ -44,6 +44,11 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
      * This variable represents the truth value of whether the snake's direction of movement has changed or not
      */
     private boolean directionChanged = false;
+
+    /**
+     * This variable represents a delay
+     */
+    private double delay = 380;
     /**
      * This variable represents a sheet of rocks (obstacles) on the playing field
      */
@@ -58,6 +63,13 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
      */
     private Apple apple = new Apple(boardSize / 2 - 2, boardSize / 2);
     //region getters and setters
+    public double getDelay() {
+        return delay;
+    }
+
+    public void setDelay(double delay) {
+        this.delay = delay;
+    }
 
     public void setBoardSize(int boardSize) {
         this.boardSize = boardSize;
@@ -109,7 +121,7 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
     public GameBoard() {
         startTime = System.currentTimeMillis();
         setPreferredSize(new Dimension(getWidth(), getHeight()));
-        timer = new Timer(380, this);
+        timer = new Timer((int) delay, this);
         startGame();
         timer.start();
         addKeyListener(this);
@@ -161,12 +173,12 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
 
         // Snake.Snake.Apple
         g.setColor(Color.red);
-        g.fillOval(apple.getAppleX() * tileSize + 3, apple.getAppleY() * tileSize + 3, tileSize - 6, tileSize - 6);
+        g.fillOval(apple.getX() * tileSize + 3, apple.getY() * tileSize + 3, tileSize - 6, tileSize - 6);
 
         // Rocks
         g.setColor(Color.black);
         for (Rock rock : rocks) {
-            g.fillRect(rock.getRockX() * tileSize, rock.getRockY() * tileSize, tileSize, tileSize);
+            g.fillRect(rock.getX() * tileSize, rock.getY() * tileSize, tileSize, tileSize);
         }
 
         // Score and time panel
@@ -189,7 +201,7 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
         Iterator<Rock> iterator = rocks.iterator();
         while (iterator.hasNext()) {
             Rock rock = iterator.next();
-            if (snake.getSnakeX() == rock.getRockX() && snake.getSnakeY() == rock.getRockY()) {
+            if (snake.getSnakeX() == rock.getX() && snake.getSnakeY() == rock.getY()) {
                 timer.stop();
                 startGame();
                 break;
@@ -264,7 +276,7 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
         rocks.clear();
         for (int i = 0; i < 2; i++) {
             Rock rock = new Rock(random.nextInt(boardSize), random.nextInt(boardSize));
-            while (isOccupied(rock.getRockX(), rock.getRockY())) {
+            while (isOccupied(rock.getX(), rock.getY())) {
                 rock = new Rock(random.nextInt(boardSize), random.nextInt(boardSize));
             }
             rocks.add(rock);
@@ -314,7 +326,7 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
         time = String.format("%02d:%02d", minutes, seconds);
         if (seconds % 20 == 0) {
             Rock newRock = new Rock(random.nextInt(boardSize), random.nextInt(boardSize));
-            while (isOccupied(newRock.getRockX(), newRock.getRockY())) {
+            while (isOccupied(newRock.getX(), newRock.getY())) {
                 newRock = new Rock(random.nextInt(boardSize), random.nextInt(boardSize));
             }
             rocks.add(newRock);
@@ -323,14 +335,17 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
 
     /**
      * This method checks if the snake has eaten the apple and grows the snake if it has
-     * If the snake's head is at the same position as the apple, the snake's score is increased, a new apple is placed on the board, and the method returns {@code true}.
+     * If the snake's head is at the same position as the apple, the snake's score is increased, a new apple is placed on the board, and the method returns {@code true} and delay is updated.
      * Otherwise, the method returns {@code false}.
      * @return {@code true} if the snake has eaten the apple and grown, {@code false} otherwise
      */
     public boolean grow() {
-        if (snake.getSnakeX() == apple.getAppleX() && snake.getSnakeY() == apple.getAppleY()) {
+        if (snake.getSnakeX() == apple.getX() && snake.getSnakeY() == apple.getY()) {
             snake.setScore(snake.getScore() + 1);
             placeApple();
+            delay *= 0.98;
+            timer.setDelay((int) delay);
+            System.out.println(delay);
             return true;
         }
         return false;
@@ -344,7 +359,7 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
         do {
             apple.setAppleX(random.nextInt(boardSize));
             apple.setAppleY(random.nextInt(boardSize));
-        } while (isOccupied(apple.getAppleX(), apple.getAppleY()));
+        } while (isOccupied(apple.getX(), apple.getY()));
     }
 
     /**
@@ -362,7 +377,7 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
             }
         }
         for (Rock rock : rocks) {
-            if (rock.getRockX() == x && rock.getRockY() == y) {
+            if (rock.getX() == x && rock.getY() == y) {
                 return true;
             }
         }

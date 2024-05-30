@@ -13,6 +13,11 @@ import java.util.HashMap;
 public class GameBoardTest {
     GameBoard gameBoard = new GameBoard();
 
+    /**
+     * Tests to see if the snake hit another part of its body
+     * first true
+     * second false
+     */
     @Test
     public void collision() {
         //snake 1 expect true
@@ -76,10 +81,17 @@ public class GameBoardTest {
         assertFalse(snake2.isCollisionWithSelf());
     }
 
+    /**
+     * Tests whether stones are created at the start of the game
+     */
     @Test
     public void makingRocks() {
         assertNotNull(gameBoard.getRocks());
     }
+
+    /**
+     * Tests the correct size of the game board
+     */
 
     @Test
     public void getGameBoardSize() {
@@ -88,13 +100,26 @@ public class GameBoardTest {
         assertEquals(gameBoard.getBoardSize(), 10);
     }
 
+    /**
+     * Tests whether an apple has been drawn
+     */
+
     @Test
     public void drawAnApple() {
         Apple apple = gameBoard.getApple();
         assertEquals(apple.getX(), 5);
         assertEquals(apple.getY(), 7);
+
+        Apple apple2 = gameBoard.getApple();
+        apple2.setAppleX(9);
+        apple2.setAppleY(3);
+        assertEquals(apple2.getX(), 9);
+        assertEquals(apple2.getY(), 3);
     }
 
+    /**
+     * Tests whether an apple has been drawn on the snake, if so it returns true, otherwise false
+     */
     @Test
     public void isAnAppleOnTheSnake() {
 

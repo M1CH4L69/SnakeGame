@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Snake_0.1:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff24e287-8259-4c61-9541-8238ac933611" name="Changes" comment="Serialization">
-      <change beforePath="$PROJECT_DIR$/src/Snake/Apple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Snake/Apple.java" afterDir="false" />
+    <list default="true" id="ff24e287-8259-4c61-9541-8238ac933611" name="Changes" comment="snake.ser file">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Snake_0_1_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/snake.ser" beforeDir="false" afterPath="$PROJECT_DIR$/snake.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Snake/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Snake/GameBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tests/GameBoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/GameBoardTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +43,9 @@
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2f0VJZiOt7njPbufjfOqZilUW2y" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -41,7 +54,12 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Main.executor": "Run",
     "Downloaded.Files.Path.Enabled": "false",
+    "JAR Application.Unnamed.executor": "Run",
+    "JUnit.GameBoardTest.drawAnApple.executor": "Run",
+    "JUnit.GameBoardTest.getGameBoardSize.executor": "Run",
+    "JUnit.GameBoardTest.makingRocks.executor": "Run",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
     "Repository.Attach.Sources": "false",
@@ -52,7 +70,18 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "create.test.in.the.same.root": "true",
-    "last_opened_file_path": "D:/IT_druhak/Serializace"
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Snake_0.3",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settingsdialog.textmate.bundles",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -62,6 +91,9 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\misan\IdeaProjects\Snake_0.3\out\production\Snake_0.1\Snake" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="Snake" />
     </key>
@@ -69,7 +101,13 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.GameBoardTest.drawAnApple">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <module name="Snake_0.1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="GameBoardTest.collision" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Snake_0.1" />
       <extension name="coverage">
@@ -81,6 +119,22 @@
       <option name="PACKAGE_NAME" value="Tests" />
       <option name="MAIN_CLASS_NAME" value="Tests.GameBoardTest" />
       <option name="METHOD_NAME" value="collision" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameBoardTest.drawAnApple" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Snake_0.1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Tests" />
+      <option name="MAIN_CLASS_NAME" value="Tests.GameBoardTest" />
+      <option name="METHOD_NAME" value="drawAnApple" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -134,31 +188,37 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GameBoardTest.placeApple" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Snake_0.1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Tests" />
-      <option name="MAIN_CLASS_NAME" value="Tests.GameBoardTest" />
-      <option name="METHOD_NAME" value="placeApple" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="Unnamed" type="JarApplication">
+      <option name="WORKING_DIRECTORY" value="C:\Users\misan\IdeaProjects\Snake_0.3" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Application.Unnamed" />
+      <item itemvalue="JAR Application.Unnamed" />
+      <item itemvalue="JUnit.GameBoardTest.drawAnApple" />
+      <item itemvalue="JUnit.GameBoardTest.collision" />
+      <item itemvalue="JUnit.GameBoardTest.getGameBoardSize" />
+      <item itemvalue="JUnit.GameBoardTest.isAnAppleOnTheSnake" />
+      <item itemvalue="JUnit.GameBoardTest.makingRocks" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.GameBoardTest.drawAnApple" />
+        <item itemvalue="JUnit.GameBoardTest.getGameBoardSize" />
+        <item itemvalue="JUnit.GameBoardTest.makingRocks" />
         <item itemvalue="JUnit.GameBoardTest.collision" />
         <item itemvalue="JUnit.GameBoardTest.isAnAppleOnTheSnake" />
-        <item itemvalue="JUnit.GameBoardTest.placeApple" />
-        <item itemvalue="JUnit.GameBoardTest.makingRocks" />
-        <item itemvalue="JUnit.GameBoardTest.getGameBoardSize" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17011.79" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17011.79" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -184,7 +244,9 @@
       <workItem from="1716821234113" duration="5643000" />
       <workItem from="1716827171304" duration="626000" />
       <workItem from="1716986531677" duration="7102000" />
-      <workItem from="1717058742244" duration="1591000" />
+      <workItem from="1717058742244" duration="2928000" />
+      <workItem from="1717065505859" duration="1078000" />
+      <workItem from="1717067349772" duration="14824000" />
     </task>
     <task id="LOCAL-00001" summary="Creating a game window and graphics of the playing field">
       <created>1712947768606</created>
@@ -270,7 +332,14 @@
       <option name="project" value="LOCAL" />
       <updated>1717060250670</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="snake.ser file">
+      <created>1717060424953</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1717060424953</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -301,7 +370,8 @@
     <MESSAGE value="The isCollisionWithSelf method has been moved to the snake class" />
     <MESSAGE value="The isCollisionWithSelf method has been moved to the Snake class" />
     <MESSAGE value="Serialization" />
-    <option name="LAST_COMMIT_MESSAGE" value="Serialization" />
+    <MESSAGE value="snake.ser file" />
+    <option name="LAST_COMMIT_MESSAGE" value="snake.ser file" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -312,5 +382,9 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

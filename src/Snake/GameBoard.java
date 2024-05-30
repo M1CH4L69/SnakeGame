@@ -63,6 +63,7 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener, Se
      * This variable represents an apple object
      */
     private Apple apple = new Apple(boardSize / 2 - 2, boardSize / 2);
+
     //region getters and setters
     public double getDelay() {
         return delay;
@@ -117,7 +118,8 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener, Se
     public void setTime(String time) {
         this.time = time;
     }
-//endregion
+
+    //endregion
     //region constructor
     public GameBoard() {
         startTime = System.currentTimeMillis();
@@ -137,6 +139,7 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener, Se
      * In the third part for rendering the apple
      * In the fourth part for rendering the obstacles
      * In the fifth part, the score and time panel + score and time display is drawn
+     *
      * @param g the <code>Graphics</code> object to protect
      */
     public void paintComponent(Graphics g) {
@@ -236,7 +239,8 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener, Se
                     break;
                 case 1:
                     if (snake.getSnakeY() >= getBoardSize() - 1) {
-                        timer.stop();serialized();
+                        timer.stop();
+                        serialized();
                         startGame();
                     } else {
                         snake.setSnakeY(snake.getSnakeY() + 1);
@@ -291,7 +295,7 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener, Se
             }
             rocks.add(rock);
         }
-        int result = JOptionPane.showOptionDialog(this, "Snake\nScore: " + snake.getScore() + "\nTime: " + time, "Snake.Snake Game", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new String[]{"Start Game", "Exit"}, "Start Game");
+        int result = JOptionPane.showOptionDialog(this, "Snake\nScore: " + snake.getScore() + "\nTime: " +  time + "\nW - Up\nA - Left\nS - Down\nD - Right", "Snake Game", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new String[]{"Start Game", "Exit"}, "Start Game");
 
         if (result == 0) {
             resetGame();
@@ -305,6 +309,7 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener, Se
      * the time is set to 00:00, the score is set to 0, the snake's body is set to its original size, the snake's direction is set to the right, the first apple is set right next to the snake's head in the direction of its movement, and the obstacle sheet is cleared
      */
     public void resetGame() {
+        setDelay(380);
         setTime("00:00");
         snake.setScore(0);
         snake.getBody().clear();
@@ -347,6 +352,7 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener, Se
      * This method checks if the snake has eaten the apple and grows the snake if it has
      * If the snake's head is at the same position as the apple, the snake's score is increased, a new apple is placed on the board, and the method returns {@code true} and delay is updated.
      * Otherwise, the method returns {@code false}.
+     *
      * @return {@code true} if the snake has eaten the apple and grown, {@code false} otherwise
      */
     public boolean grow() {
@@ -355,7 +361,7 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener, Se
             placeApple();
             delay *= 0.98;
             timer.setDelay((int) delay);
-            //System.out.println(delay);
+            System.out.println(delay);
             return true;
         }
         return false;
@@ -422,6 +428,7 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener, Se
 
     /**
      * A method that takes input from the keyboard
+     *
      * @param e the event to be processed
      */
     @Override

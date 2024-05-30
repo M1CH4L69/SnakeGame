@@ -45,4 +45,11 @@ public class Apple implements Suplements, Serializable {
     }
 
     //endregion
+
+    @Override
+    public String toString() {
+        return "Apple: " +
+                "appleX: " + appleX +
+                ", appleY: " + appleY;
+    }
 }

@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff24e287-8259-4c61-9541-8238ac933611" name="Changes" comment="The isCollisionWithSelf method has been moved to the Snake class">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Snake/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Snake/GameBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Snake/Snake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Snake/Snake.java" afterDir="false" />
+    <list default="true" id="ff24e287-8259-4c61-9541-8238ac933611" name="Changes" comment="Serialization">
+      <change beforePath="$PROJECT_DIR$/src/Snake/Apple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Snake/Apple.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,7 +184,7 @@
       <workItem from="1716821234113" duration="5643000" />
       <workItem from="1716827171304" duration="626000" />
       <workItem from="1716986531677" duration="7102000" />
-      <workItem from="1717058742244" duration="1166000" />
+      <workItem from="1717058742244" duration="1591000" />
     </task>
     <task id="LOCAL-00001" summary="Creating a game window and graphics of the playing field">
       <created>1712947768606</created>
@@ -265,7 +263,14 @@
       <option name="project" value="LOCAL" />
       <updated>1717059189572</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Serialization">
+      <created>1717060250670</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1717060250670</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -295,7 +300,8 @@
     <MESSAGE value="Interface + delay" />
     <MESSAGE value="The isCollisionWithSelf method has been moved to the snake class" />
     <MESSAGE value="The isCollisionWithSelf method has been moved to the Snake class" />
-    <option name="LAST_COMMIT_MESSAGE" value="The isCollisionWithSelf method has been moved to the Snake class" />
+    <MESSAGE value="Serialization" />
+    <option name="LAST_COMMIT_MESSAGE" value="Serialization" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

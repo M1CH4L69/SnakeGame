@@ -1,12 +1,13 @@
 package Snake;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
  * A class representing a snake object
  */
-public class Snake {
+public class Snake implements Serializable {
 
     /**
      * this variable stores the body of the snake
@@ -109,5 +110,11 @@ public Snake(int snakeX, int snakeY, int snakeSize) {
             }
         }
         return false;
+    }
+
+    @Override
+    public String toString() {
+        return "Snake" +
+                ", score: " + score;
     }
 }

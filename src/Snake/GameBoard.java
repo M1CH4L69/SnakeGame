@@ -3,6 +3,7 @@ package Snake;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -11,7 +12,7 @@ import java.util.Random;
 /**
  * GameBoard is a class to store all dimensions and functions for a game
  */
-public class GameBoard extends JPanel implements ActionListener, KeyListener {
+public class GameBoard extends JPanel implements ActionListener, KeyListener, Serializable {
     /**
      * This variable is used to hold the initial time when the game starts or is restarted
      */
@@ -197,12 +198,13 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
      * Furthermore, the isCollisionWithSelf method is used to check whether it has collided with another part of its body
      */
 
-    public void check() {
+    public void check() throws IOException {
         Iterator<Rock> iterator = rocks.iterator();
         while (iterator.hasNext()) {
             Rock rock = iterator.next();
             if (snake.getSnakeX() == rock.getX() && snake.getSnakeY() == rock.getY()) {
                 timer.stop();
+                serialized();
                 startGame();
                 break;
             }
@@ -210,6 +212,7 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
 
         if (snake.isCollisionWithSelf()) {
             timer.stop();
+            serialized();
             startGame();
         }
     }
@@ -218,13 +221,14 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
      * A method for moving the snake and checking if the snake has hit the edge of the board
      * After crashing or otherwise ending the game, a panel will appear in which a new game can be started
      */
-    public void moveSnake() {
+    public void moveSnake() throws IOException {
         if (!directionChanged) {
             HashMap<Integer, Integer> newHead = new HashMap<>();
             switch (snake.getDirection()) {
                 case 0:
                     if (snake.getSnakeY() <= 0) {
                         timer.stop();
+                        serialized();
                         startGame();
                     } else {
                         snake.setSnakeY(snake.getSnakeY() - 1);
@@ -232,7 +236,7 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
                     break;
                 case 1:
                     if (snake.getSnakeY() >= getBoardSize() - 1) {
-                        timer.stop();
+                        timer.stop();serialized();
                         startGame();
                     } else {
                         snake.setSnakeY(snake.getSnakeY() + 1);
@@ -241,6 +245,7 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
                 case 2:
                     if (snake.getSnakeX() <= 0) {
                         timer.stop();
+                        serialized();
                         startGame();
                     } else {
                         snake.setSnakeX(snake.getSnakeX() - 1);
@@ -249,6 +254,7 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
                 case 3:
                     if (snake.getSnakeX() >= getBoardSize() - 1) {
                         timer.stop();
+                        serialized();
                         startGame();
                     } else {
                         snake.setSnakeX(snake.getSnakeX() + 1);
@@ -261,7 +267,11 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
             if (!grow()) {
                 snake.getBody().remove(snake.getBody().size() - 1);
             }
-            check();
+            try {
+                check();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
         directionChanged = false;
     }
@@ -384,10 +394,24 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
         return false;
     }
 
+    /**
+     * Method for serialization
+     */
+    public void serialized() {
+        try (ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream("snake.ser"))) {
+            stream.writeObject(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        moveSnake();
+        try {
+            moveSnake();
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
         updateTime();
         repaint();
     }
@@ -409,28 +433,44 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
                 if (snake.getDirection() != 1) {
                     snake.setDirection(0); // up
                     directionChanged = true;
-                    moveSnake();
+                    try {
+                        moveSnake();
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
                 }
                 break;
             case KeyEvent.VK_S:
                 if (snake.getDirection() != 0) {
                     snake.setDirection(1); // down
                     directionChanged = true;
-                    moveSnake();
+                    try {
+                        moveSnake();
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
                 }
                 break;
             case KeyEvent.VK_A:
                 if (snake.getDirection() != 3) {
                     snake.setDirection(2); // left
                     directionChanged = true;
-                    moveSnake();
+                    try {
+                        moveSnake();
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
                 }
                 break;
             case KeyEvent.VK_D:
                 if (snake.getDirection() != 2) {
                     snake.setDirection(3); // right
                     directionChanged = true;
-                    moveSnake();
+                    try {
+                        moveSnake();
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
                 }
                 break;
         }

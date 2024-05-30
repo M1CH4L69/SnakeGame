@@ -1,9 +1,11 @@
 package Snake;
 
+import java.io.Serializable;
+
 /**
  * A class representing an apple
  */
-public class Apple implements Suplements{
+public class Apple implements Suplements, Serializable {
 
     /**
      * This variable specifies the X coordinate of the apple

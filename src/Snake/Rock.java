@@ -1,9 +1,11 @@
 package Snake;
 
+import java.io.Serializable;
+
 /**
  * A class representing an obstacle
  */
-public class Rock implements Suplements{
+public class Rock implements Suplements, Serializable {
 
     /**
      * This variable specifies the X coordinate of the obstacle

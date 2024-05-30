@@ -95,4 +95,19 @@ public Snake(int snakeX, int snakeY, int snakeSize) {
         this.body = body;
     }
     //endregion
+
+
+    /**
+     * A method for checking if a snake has hit another part of its body
+     * @return {@code true} if his had hit his body, {@code false} otherwise
+     */
+    public boolean isCollisionWithSelf() {
+        HashMap<Integer, Integer> head = getBody().get(0);
+        for (int i = 1; i < getBody().size(); i++) {
+            if (getBody().get(i).equals(head)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

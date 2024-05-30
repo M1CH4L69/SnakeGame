@@ -43,7 +43,7 @@ public class GameBoardTest {
         snake.setBody(body);
         gameBoard.setSnake(snake);
 
-        assertTrue(gameBoard.isCollisionWithSelf());
+        assertTrue(snake.isCollisionWithSelf());
 
         //snake 2 expect false
 
@@ -73,7 +73,7 @@ public class GameBoardTest {
         snake2.setBody(body2);
         gameBoard.setSnake(snake2);
 
-        assertFalse(gameBoard.isCollisionWithSelf());
+        assertFalse(snake2.isCollisionWithSelf());
     }
 
     @Test

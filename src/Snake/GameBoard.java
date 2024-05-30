@@ -208,7 +208,7 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
             }
         }
 
-        if (isCollisionWithSelf()) {
+        if (snake.isCollisionWithSelf()) {
             timer.stop();
             startGame();
         }
@@ -345,7 +345,7 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
             placeApple();
             delay *= 0.98;
             timer.setDelay((int) delay);
-            System.out.println(delay);
+            //System.out.println(delay);
             return true;
         }
         return false;
@@ -384,19 +384,6 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
         return false;
     }
 
-    /**
-     * A method for checking if a snake has hit another part of its body
-     * @return {@code true} if his had hit his body, {@code false} otherwise
-     */
-    public boolean isCollisionWithSelf() {
-        HashMap<Integer, Integer> head = snake.getBody().get(0);
-        for (int i = 1; i < snake.getBody().size(); i++) {
-            if (snake.getBody().get(i).equals(head)) {
-                return true;
-            }
-        }
-        return false;
-    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
